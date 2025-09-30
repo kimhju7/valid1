@@ -1,6 +1,6 @@
-package com.du.valid1.repository;
+package com.du.em0930.repository;
 
-import com.du.valid1.entity.MyUser;
+import com.du.em0930.entity.MyUser;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface MyUserRepository  extends JpaRepository<MyUser, Long> {

@@ -1,6 +1,6 @@
-package com.du.valid1.dto;
+package com.du.em0930.dto;
 
-import com.du.valid1.entity.MyUser;
+import com.du.em0930.entity.MyUser;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
