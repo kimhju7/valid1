@@ -3,8 +3,10 @@ package com.du.em0930.config;
 import com.du.em0930.repository.DeptRepository;
 import com.du.em0930.repository.EmpRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.format.FormatterRegistry;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
@@ -18,5 +20,12 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addConverter(new StringToDeptConverter(deptRepository));
     }
 
+    @Value("${upload.path}")
+    private String uploadPath;
 
+    @Override
+    // "/uploads/**"로 오는 요청은 실제 파일 시스템 경로에서 제공
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/uploads/**").addResourceLocations("file:///" + uploadPath + "/");
+    }
 }
